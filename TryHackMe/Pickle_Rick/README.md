@@ -37,8 +37,7 @@ El escaneo inicial con **Nmap** confirmó que la máquina está en línea y reve
 **Análisis del Sitio Web (Puerto 80)**
 Al navegar a la dirección IP, se encontró un sitio web con temática de **Rick y Morty**. La página principal mostraba una imagen y un mensaje de ayuda de Rick para Morty.
 
-<img width="1448" height="659" alt="image" src="https://github.com/user-attachments/assets/dc367c1f-2db5-4698-96cc-109dd59c1613" />
-
+![alt](images/1png.png)
 
 Al inspeccionar el **código fuente** de la página (presionando `Ctrl + U`), se descubrió un comentario oculto.
 
