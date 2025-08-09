@@ -10,11 +10,11 @@
 
 ## 📊 Datos Esenciales
 
-- **IP de la Máquina:** `10.10.220.243`
-- **Sistema Operativo:** `Linux`
-- **Tipo de Máquina:** `[ej. Web, Forense, Reversing]`
-- **Banderas:** `[ej. user.txt, root.txt]`
-- **Tiempo de Resolución:** `30 min`
+* **IP de la Máquina:** `10.10.220.243`
+* **Sistema Operativo:** `Linux`
+* **Tipo de Máquina:** `Web`
+* **Ingredientes:** `mr. meeseek hair`, `1 jerry tear` y `fleeb juice`.
+* **Tiempo de Resolución:** `30 min`
 
 ---
 
