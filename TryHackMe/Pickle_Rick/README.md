@@ -1,4 +1,4 @@
-![Logo de Pickle Rick](images/pickle_logo.jpeg)
+
 
 # Writeup: Pickle Rick
 
