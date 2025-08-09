@@ -41,7 +41,7 @@ Al navegar a la dirección IP, se encontró un sitio web con temática de **Rick
 
 Al inspeccionar el **código fuente** de la página (presionando `Ctrl + U`), se descubrió un comentario oculto.
 
-![Aquí va la imagen del código fuente con el comentario]
+![alt](images/2.png)
 
 Este comentario revelaba una nota para un usuario, proporcionando una pista valiosa:
 
