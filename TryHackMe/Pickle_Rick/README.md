@@ -10,7 +10,7 @@
 
 ## 📊 Datos Esenciales
 
-- **IP de la Máquina:** `10.10.253.184`
+- **IP de la Máquina:** `10.10.220.243`
 - **Sistema Operativo:** `Linux`
 - **Tipo de Máquina:** `[ej. Web, Forense, Reversing]`
 - **Banderas:** `[ej. user.txt, root.txt]`
@@ -22,7 +22,7 @@
 
 El primer paso fue realizar un escaneo de puertos para identificar los servicios activos en la máquina. Utilicé `nmap` con los siguientes parámetros para un escaneo de versiones y scripts:
 ```bash
-nmap -p- --open -sS -sC -sV --min-rate 2000 -n -vvv -Pn 10.10.253.184 -oN escaneo
+nmap -p- --open -sS -sC -sV --min-rate 2000 -n -vvv -Pn 10.10.220.243 -oN escaneo
 ```
 
 El escaneo inicial con **Nmap** confirmó que la máquina está en línea y reveló los siguientes puertos abiertos:
