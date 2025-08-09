@@ -201,3 +201,20 @@ ls -la
 ```
 
 Al igual que con los ingredientes anteriores, usé el comando `cat` para ver su contenido. El contenido del archivo era **`fleeb juice`**, lo que me proporcionó el tercer y último ingrediente necesario para completar la máquina.
+Entendido. Buscamos un punto intermedio: profesional, pero con un toque que lo haga interesante. Aquí tienes una versión de la conclusión que mantiene la seriedad pero es más atractiva.
+
+---
+
+
+### 🎉 Misión Cumplida: Conclusión
+
+Con el último ingrediente asegurado, la misión de Rick está completa y nuestro *write-up* llega a su fin. Este desafío en **TryHackMe** fue una excelente oportunidad para poner en práctica una metodología de *pentesting* integral, demostrando que incluso las máquinas "fáciles" pueden ofrecer valiosas lecciones.
+
+En este recorrido, hemos:
+* **Escaneado y Enumerado**: Identificamos los servicios y profundizamos en el sitio web para desenterrar información crítica.
+* **Explotado**: Usamos una inyección de comandos para tomar el control inicial del sistema a través de una *reverse shell*.
+* **Perforado la Defensa**: Escalamos de un usuario de bajo privilegio a **`root`** aprovechando una configuración incorrecta en `sudo`, una de las vulnerabilidades más comunes en sistemas Linux.
+
+Cada paso nos acercó más a la solución, probando que la persistencia y un enfoque metódico son clave para el éxito en el mundo del *hacking*.
+
+Hasta que nuestras terminales se encuentren de nuevo, la caza continúa.
