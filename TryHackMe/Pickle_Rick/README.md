@@ -1,4 +1,4 @@
-![Logo de Pickle Rick](TryHackMe/Pickle_Rick/images/pickle_logo.jpeg)
+![Logo de Pickle Rick](Images/pickle_logo.jpeg)
 
 # Writeup: Pickle Rick
 
