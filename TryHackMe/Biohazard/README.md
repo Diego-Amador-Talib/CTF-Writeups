@@ -87,3 +87,11 @@ Seguimos las indicaciones del mensaje.
 Nos redirige a una página con el nombre "rebecca".
 Vamos ahora al directorio /diningRoom/
 ![imagen](images/15.png)
+
+Tenemos una cadena cifrada cuyo tipo de cifrado es Vigenère, y procedemos a descifrarla usando la palabra clave 'rebecca'.
+Yo usaré mi propia herramienta la cual os dejo el repositorio de github:-------
+
+![imagen](images/16.png)
+
+Vamos a la ruta que nos especifica la pista encontrada `http://10.10.137.165/diningRoom/the_great_shield_key.html`
+Obteniendo así la flag `shield_key{48a7a9227cd7eb89f0a062590798cbac}`
