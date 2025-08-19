@@ -37,4 +37,30 @@ El escaneo inicial con **Nmap** confirmó que la máquina está en línea y reve
 
 ---
 ### Análisis del Sitio Web (Puerto 80)
-![1](images/1.png)
+![imagen](images/1.png)
+
+Dentro del código fuente de http://10.10.248.135/mansionmain/ encontramos el siguiente directorio
+
+![imagen](images/2.png)
+![imagen](images/3.png)
+
+Encontramos nuestra primera flag `emblem{fec832623ea498e20bf4fe1821d58727}`
+
+Volvemos a http://10.10.248.135/diningRoom/ e inspecionamos su codigo fuente
+![imagen](images/4.png)
+
+Obtenemos una cadena codificada en base64 y para decodificarlo ejectuamos el comando:
+```
+echo "SG93IGFib3V0IHRoZSAvdGVhUm9vbS8=" | base64 -d
+```
+ El cual nos revela un nuevo directorio `/teaRoom/`
+
+ ![imagen](images/5.png)
+
+Vemos reflejado otro nuevo directorio, además, al hacer click en `Lockpick` encontramos la bandera: `lock_pick{037b35e2ff90916a9abf99129c8e1837}`
+
+ ![imagen](images/6.png)
+
+ Al hacer click en yes, nos dirige a una página la cual nos revela una multitud de nuevos direcorios a inspecionar
+
+ ![imagen](images/7.png)
