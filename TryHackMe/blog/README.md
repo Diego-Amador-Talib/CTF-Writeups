@@ -1,5 +1,5 @@
 # Writeup: Blog
-
+![Banner de Blog](images/banner_blog.png)
 **Blog** es un desafío de nivel **Medio** de la plataforma **TryHackMe**. En este writeup, documento los pasos que seguí para obtener acceso al sistema, escalar privilegios y encontrar las 2 banderas: **user.txt** y **root.txt**.
 
 ---
@@ -45,6 +45,7 @@ El escaneo inicial con **Nmap** confirmó que la máquina está en línea y reve
 ### Análisis del Sitio Web (Puerto 80)
 
 Al navegar a la dirección IP (`10.10.232.42`), el sitio web no carga correctamente. Según la descripción del desafío, esto se debe a que el sitio web requiere que se resuelva un nombre de dominio específico.
+![1](images/1.png)
 Para solucionar este problema, se debe añadir una entrada al archivo **`/etc/hosts`** de la máquina atacante, mapeando el nombre de host `blog.thm` a la dirección IP de la máquina objetivo.
 
 ```bash
@@ -52,7 +53,7 @@ echo "10.10.232.42 blog.thm" | sudo tee -a /etc/hosts
 ```
 
 Una vez que se añade esta línea, al navegar a `http://blog.thm` se accede al blog de WordPress, titulado "Billy Joel's IT Blog – The IT blog", como se detectó en el escaneo de Nmap.
-
+![2](images/2.png)
 ---
 
 ### Búsqueda de Usuarios y Fuerza Bruta
