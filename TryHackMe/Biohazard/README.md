@@ -56,7 +56,7 @@ echo "SG93IGFib3V0IHRoZSAvdGVhUm9vbS8=" | base64 -d
  El cual nos revela un nuevo directorio `/teaRoom/`
 
  ![imagen](images/5.png)
-
+¡
 Vemos reflejado otro nuevo directorio, además, al hacer click en `Lockpick` encontramos la bandera: `lock_pick{037b35e2ff90916a9abf99129c8e1837}`
 
  ![imagen](images/6.png)
@@ -64,3 +64,26 @@ Vemos reflejado otro nuevo directorio, además, al hacer click en `Lockpick` enc
  Al hacer click en yes, nos dirige a una página la cual nos revela una multitud de nuevos direcorios a inspecionar
 
  ![imagen](images/7.png)
+
+ Nos vamos a `/barRoom/` a seguir con la enumeración.
+ 
+ ![imagen](images/8.png)
+  ![imagen](images/9.png)
+   ![imagen](images/10.png)
+   Obtenemos una cadena codificada en base 32 y para decodificarlo ejectuamos el comando:
+   ```
+   echo "NV2XG2LDL5ZWQZLFOR5TGNRSMQ3TEZDFMFTDMNLGGVRGIYZWGNSGCZLDMU3GCMLGGY3TMZL5" | base32 -d
+   ```
+El cual nos revela una nueva flag `music_sheet{362d72deaf65f5bdc63daece6a1f676e}`
+
+ ![imagen](images/11.png)
+  ![imagen](images/12.png)
+   ![imagen](images/13.png)
+   Conseguimos otra flag `gold_emblem{58a8c41a9d08b8a4e38d02a4d7ff4843}` pero además hay un mensaje que dice: 
+`Parece que puedes poner algo en la ranura del emblema, actualiza la página anterior.`
+Seguimos las indicaciones del mensaje.
+
+  ![imagen](images/14.png)
+Nos redirige a una página con el nombre "rebecca".
+Vamos ahora al directorio /diningRoom/
+![imagen](images/15.png)
