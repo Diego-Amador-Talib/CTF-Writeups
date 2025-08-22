@@ -95,3 +95,113 @@ Yo usaré mi propia herramienta la cual os dejo el repositorio de github:-------
 
 Vamos a la ruta que nos especifica la pista encontrada `http://10.10.137.165/diningRoom/the_great_shield_key.html`
 Obteniendo así la flag `shield_key{48a7a9227cd7eb89f0a062590798cbac}`
+
+Visitamos http://10.10.211.184/diningRoom2F/ y revisa el código fuente; obtendrás una cadena cifrada. la cual descifraremos
+![imagen](images/17.png)
+
+Vamos a la ruta que nos especifica la pista enconrtamos
+`http://10.10.211.184/diningRoom/sapphire.html`
+Obteniendo así la flag `blue_jewel{e1d457e96cac640f863ec7bc475d48aa}`
+
+---
+
+#### Caza de crestas
+
+##### Cresta 1:
+![imagen](images/18.png)
+
+Cresta 1:
+S0pXRkVVS0pKQkxIVVdTWUpFM0VTUlk9
+Pista 1: La cresta 1 se ha codificado dos veces.
+Pista 2: La cresta 1 contiene 14 letras.
+
+S0pXRkVVS0pKQkxIVVdTWUpFM0VTUlk9 (base 64)
+KJWFEUKJJBLHUWSYJE3ESRY= (base 32)
+RlRQIHVzZXI6IG (final)
+
+---
+
+##### Cresta 2:
+![imagen](images/19.png)
+
+Cresta 2:
+GVFWK5KHK5WTGTCILE4DKY3DNN4GQQRTM5AVCTKE
+Pista 1: La cresta 2 se ha codificado dos veces.
+Pista 2: La cresta 2 contiene 18 letras.
+
+GVFWK5KHK5WTGTCILE4DKY3DNN4GQQRTM5AVCTKE (base 32).
+5KeuGWm3LHY85cckxhB3gAQMD (base 58).
+h1bnRlciwgRlRQIHBh (final).
+
+---
+
+##### Cresta 3:
+![imagen](images/20.png)
+
+cresta 3:
+MDAxMTAxMTAgMDAxMTAwMTEgMDAxMDAwMDAgMDAxMTAwMTEgMDAxMTAwMTEgMDAxMDAwMDAgMDAxMTAxMD AgMDExMDAxMDAgMDAxMDAwMDAgMDAxMTAwMTEgMDAxMTAxMTAgMDAxMDAwMDAgMDAxMTAxMDAgMDAxMTEwM DEgMDAxMDAwMDAgMDAxMTAxMDAgMDAxMTEwMDAgMDAxMDAwMDAgMDAxMTAxMTAgMDExMDAwMTEgMDAxMDAwM DAgMDAxMTAxMTEgMDAxMTAxMTAgMDAxMDAwMDAgMDAxMTAxMTAgMDAxMTAxMDAgMDAxMDAwMDAgMDAxMTAxMD EgMDAxMTAxMTAgMDAxMDAwMDAgMDAxMTAwMTEgMDAxMTEwMDEgMDAxMDAwMDAgMDAxMTAxMTAgMDExMDAwMD EgMDAxMDAwMDAgMDAxMTAxMDEgMDAxMTEwMDEgMDAxMDAwMDAgMDAxMTAxMDEgMDAxMDAxMTEgMDAxMDAwMDAgMDAxMTAxMTEgMDAxMDAwMDA gMDAxMTAwMTEgMDAxMTAxMDEgMDAxMDAwMDAgMDAxMTAwMTEgMDAxMTAwMTAgMDAxMDAwMDAgMDAxMTAxMDE gMDAxMTEwMDAgMDAxMDAwMDAgMDAxMTAwMTEgMDAxMTAwMTAgMDAxMDAwMDAgMDAxMTAxMTAgMDAxMTEwMDA= (base64 > binario)
+Pista 1: la cresta 3 se ha codificado tres veces
+Pista 2: el escudo 3 contiene 19 letras
+
+63 33 4d 36 49 48 6c 76 64 56 39 6a 59 57 35 30 58 32 68 (HEX)
+c3M6IHlvdV9jYW50X2h (final)
+
+---
+
+##### Cresta 4:
+![imagen](images/20.png)
+
+Cresta 4:
+gSUERauVpvKzRpyPpuYz66JDmRTbJubaoArM6CAQsnVwte6zF9J4GGYyun3k5qM9ma4s (base 58)
+Pista 1: La cresta 2 se ha codificado dos veces.
+Pista 2: La cresta 2 contiene 17 caracteres.
+
+70 5a 47 56 66 5a 6d 39 79 5a 58 5a 6c 63 67 3d 3d (hexagonal)
+pZGVfZm9yZXZlcg== (final)
+
+---
+
+#### Resolución
+
+CRESTA 1 + CRESTA 2 + CRESTA 3 + CRESTA 4 = 
+RlRQIHVzZXI6IGh1bnRlciwgRlRQIHBhc3M6IHlvdV9jYW50X2hpZGVfZm9yZXZlcg == (base 64)
+`FTP user: hunter, FTP pass: you_cant_hide_forever`
+
+---
+
+## 💥 Fase 2: Explotación y Acceso Inicial
+
+Entramos por el puerto ftp con el usuario y contraseñas halladas y nos traemos a nuestra maquina atacante los  archivos `001-key.jpg`  `002-key.jpg`  `003-key.jpg`
+
+1. Key 1
+2. 
+> Utilice steghide para extraer la clave
+
+2. Key 2
+
+> Utilice exiftool para ver la clave
+
+3. Key 3 
+
+>Utilice binwalk para extraer la clave
+
+```
+Contraseña del archivo cifrado
+Clave final: Key 1 + Key 2 + Key 3
+cGxhbnQ0Ml9jYW5fYmVfZGVzdHJveV93aXRoX3Zqb2x0 (base64)
+```
+Lo decodificamos con:
+```
+echo "cGxhbnQ0Ml9jYW5fYmVfZGVzdHJveV93aXRoX3Zqb2x0" | base64 --decode 
+```
+Y nos muestra una contraseña: `plant42_can_be_destroy_with_vjolt`
+
+usa gpg para descifrar el archivo helmet_key.txt.gpg con la contraseña previamente obteniday obtener `helmet_flag`
+
+
+
+
+
+
+
+## The Revisit
